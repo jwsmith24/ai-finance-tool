@@ -4,6 +4,8 @@ Sandbox to play around with AI/ML concepts and APIs in Python
 ## Running the program
 Navigate to the `/testAI/` directory and run `python3 forestRegression.py`
 
+> Next phase will introduce predictions for provided user inputs.
+
 ### Example Results
 
 Using a basic forest regression model on a sample data set with 100 decision tress, the model provides interest rate and loan term predictions.
