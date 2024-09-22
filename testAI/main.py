@@ -1,8 +1,9 @@
 import joblib
 import pandas as pd
 from userPrediction import collect_user_input
+from forestRegression import train_models
 
-# Load trained models + scaler and encoder
+# Load trained models, scaler, and encoder
 model_loan_term = joblib.load("../resources/saved-models/loan_term.pkl")
 model_interest_rate = joblib.load("../resources/saved-models/interest_rate.pkl")
 scaler = joblib.load("../resources/saved-models/scaler.pkl")
@@ -27,9 +28,11 @@ def predict_user_input(input):
 
     return predicted_loan_term[0], predicted_interest_rate[0]
 
-# Generate predictions
+# Train and save models
+train_models()
+
+# Generate predictions from user input
 input = collect_user_input()
-print(input)  # Display collected input for debugging
 predicted_loan_term, predicted_interest_rate = predict_user_input(input)
 
 # Display predictions
