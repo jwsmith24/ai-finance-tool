@@ -4,8 +4,10 @@ from sklearn.preprocessing import StandardScaler, LabelEncoder
 from sklearn.ensemble import RandomForestRegressor  # Use RandomForestRegressor for continuous outputs
 from sklearn.metrics import root_mean_squared_error
 
+import joblib
+
 # Load the sample dataset
-data = pd.read_csv("real_estate_loans_simulated.csv")
+data = pd.read_csv("../resources/real_estate_loans_simulated.csv")
 
 # Clean the dataset (drop rows with missing values)
 data = data.dropna()
@@ -62,3 +64,9 @@ mse_interest_rate = root_mean_squared_error(y_test_interest_rate, y_pred_interes
 
 print(f"Loan Term RMSE: {mse_loan_term:.2f}")
 print(f"Interest Rate RMSE: {mse_interest_rate:.2f}")
+
+
+# Finally, save the model to use later
+joblib.dump(model_loan_term, "../resources/saved-models/loan_term.pkl")
+joblib.dump(model_interest_rate, "../resources/saved-models/interest_rate.pkl")
+print("Models saved!")
