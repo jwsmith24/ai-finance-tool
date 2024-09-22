@@ -36,5 +36,5 @@ input = collect_user_input()
 predicted_loan_term, predicted_interest_rate = predict_user_input(input)
 
 # Display predictions
-print(f"Your predicted Loan Term: {predicted_loan_term} months")
-print(f"Your predicted Interest Rate: {predicted_interest_rate}%")
+print(f"Your predicted Loan Term: {round(predicted_loan_term)} months")
+print(f"Your predicted Interest Rate: {predicted_interest_rate:.2} %")
