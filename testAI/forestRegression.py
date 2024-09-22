@@ -69,4 +69,6 @@ print(f"Interest Rate RMSE: {mse_interest_rate:.2f}")
 # Finally, save the model to use later
 joblib.dump(model_loan_term, "../resources/saved-models/loan_term.pkl")
 joblib.dump(model_interest_rate, "../resources/saved-models/interest_rate.pkl")
+joblib.dump(scaler, "../resources/saved-models/scaler.pkl")
+joblib.dump(label_encoder, "../resources/saved-models/label_encoder.pkl")
 print("Models saved!")
