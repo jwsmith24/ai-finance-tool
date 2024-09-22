@@ -11,7 +11,7 @@ label_encoder = joblib.load("../resources/saved-models/label_encoder.pkl")
 
 def predict_user_input(input):
     # Create data frame (ensure input is a single-row DataFrame)
-    data = pd.DataFrame([input])  # Wrap input in a list
+    data = pd.DataFrame([input])
 
     # Encode loan type
     data['loan_type_encoded'] = label_encoder.transform(data['loan_type'])
@@ -36,5 +36,5 @@ input = collect_user_input()
 predicted_loan_term, predicted_interest_rate = predict_user_input(input)
 
 # Display predictions
-print(f"Your predicted Loan Term: {round(predicted_loan_term)} months")
+print(f"Your predicted Loan Term: {round(predicted_loan_term)} years")
 print(f"Your predicted Interest Rate: {predicted_interest_rate:.2} %")
