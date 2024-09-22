@@ -1,6 +1,4 @@
 
-from sklearn.preprocessing import StandardScaler, LabelEncoder
-
 # Collect financial data from the user and return as a data object
 def collect_user_input():
     data = {

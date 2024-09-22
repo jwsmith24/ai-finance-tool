@@ -12,7 +12,7 @@ First the program will use the provided data (located in /resources) to train th
 
 Using a basic forest regression model on a sample data set with 100 decision tress, the model provides interest rate and loan term predictions.
 
-The error for loan term predictions is +/- 8 months. The error for interest rate predictions is +/- 1%.
+The error for loan term predictions on the sample data (1000 entries) is +/- 8 months. The error for interest rate predictions is +/- 1%.
 
 ![Example results](resources/forest-regression-example.png)
 
