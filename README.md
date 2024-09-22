@@ -14,7 +14,7 @@ The error for loan term predictions is +/- 8 months. The error for interest rate
 
 ## Terms
 
-Features - Input data provided to the model
+Features - Input data provided to the model  
 Label/Target(s) - Output data we want to predict with the model
 
 ## ML Algorithms
