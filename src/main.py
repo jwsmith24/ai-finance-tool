@@ -1,7 +1,7 @@
 import joblib
 import pandas as pd
 from userPrediction import collect_user_input
-from forestRegression import train_models
+from models import train_models
 
 # Train and save models
 train_models()
