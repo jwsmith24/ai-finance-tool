@@ -4,7 +4,9 @@ Sandbox to play around with AI/ML concepts and APIs in Python
 
 ## Running the program
 
-Navigate to the `/testAI/` directory and run `python3 main.py`
+Navigate to the `/src` directory and run `main.py` within a local python environment.
+
+> Todo: Docker container
 
 First the program will use the provided data (located in /resources) to train the models for interest rate and loan term predictions. Then it will prompt the user for their information and provide a personalized prediction.
 
