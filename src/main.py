@@ -12,15 +12,18 @@ model_interest_rate = joblib.load("../resources/saved-models/interest_rate.pkl")
 scaler = joblib.load("../resources/saved-models/scaler.pkl")
 label_encoder = joblib.load("../resources/saved-models/label_encoder.pkl")
 
+
 def predict_user_input(input):
     # Create data frame (ensure input is a single-row DataFrame)
     data = pd.DataFrame([input])
 
     # Encode loan type
-    data['loan_type_encoded'] = label_encoder.transform(data['loan_type'])
+    data["loan_type_encoded"] = label_encoder.transform(data["loan_type"])
 
     # Select relevant features from the DataFrame
-    X_input = data[['income', 'credit_score', 'loan_amount', 'property_value', 'loan_type_encoded']]
+    X_input = data[
+        ["income", "credit_score", "loan_amount", "property_value", "loan_type_encoded"]
+    ]
 
     # Scale the input data using the same scaler fitted on training data
     X_input_scaled = scaler.transform(X_input)
@@ -30,7 +33,6 @@ def predict_user_input(input):
     predicted_interest_rate = model_interest_rate.predict(X_input_scaled)
 
     return predicted_loan_term[0], predicted_interest_rate[0]
-
 
 
 # Generate predictions from user input

@@ -1,10 +1,14 @@
 import pandas as pd
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler, LabelEncoder
-from sklearn.ensemble import RandomForestRegressor, RandomForestClassifier  # RandomForestRegressor for continuous outputs, RandomForestClassifier for discrete outputs
+from sklearn.ensemble import (
+    RandomForestRegressor,
+    RandomForestClassifier,
+)  # RandomForestRegressor for continuous outputs, RandomForestClassifier for discrete outputs
 from sklearn.metrics import root_mean_squared_error, accuracy_score
 
 import joblib
+
 
 def train_models():
     # Load the sample dataset
@@ -15,20 +19,24 @@ def train_models():
 
     # Encode categorical inputs (loan type)
     label_encoder = LabelEncoder()
-    data['loan_type_encoded'] = label_encoder.fit_transform(data['loan_type'])
-    
-
+    data["loan_type_encoded"] = label_encoder.fit_transform(data["loan_type"])
 
     # Split the data into features (X) and labels/targets (y)
-    X = data[['income', 'credit_score', 'loan_amount', 'property_value', 'loan_type_encoded']]
-    y_loan_term = data['loan_term']  # Continous output
-    y_interest_rate = data['interest_rate']  # Discrete - 15 or 30 year term
+    X = data[
+        ["income", "credit_score", "loan_amount", "property_value", "loan_type_encoded"]
+    ]
+    y_loan_term = data["loan_term"]  # Continous output
+    y_interest_rate = data["interest_rate"]  # Discrete - 15 or 30 year term
 
-    # Train-test split (80% train, 20% test)
+    # Train-test split
     # 80% of the data is used to train the model and then its evaluated on 20% of it
 
-    X_train, X_test, y_train_loan_term, y_test_loan_term = train_test_split(X, y_loan_term, test_size=0.2, random_state=42)
-    X_train, X_test, y_train_interest_rate, y_test_interest_rate = train_test_split(X, y_interest_rate, test_size=0.2, random_state=42)
+    X_train, X_test, y_train_loan_term, y_test_loan_term = train_test_split(
+        X, y_loan_term, test_size=0.2, random_state=42
+    )
+    X_train, X_test, y_train_interest_rate, y_test_interest_rate = train_test_split(
+        X, y_interest_rate, test_size=0.2, random_state=42
+    )
 
     # Scale inputs
     scaler = StandardScaler()
@@ -48,12 +56,14 @@ def train_models():
     y_pred_interest_rate = model_interest_rate.predict(X_test)
 
     # Create a dataframe to store the results
-    results = pd.DataFrame({
-        'Actual Loan Term': y_test_loan_term,
-        'Predicted Loan Term': y_pred_loan_term,
-        'Actual Interest Rate': y_test_interest_rate,
-        'Predicted Interest Rate': y_pred_interest_rate
-    })
+    results = pd.DataFrame(
+        {
+            "Actual Loan Term": y_test_loan_term,
+            "Predicted Loan Term": y_pred_loan_term,
+            "Actual Interest Rate": y_test_interest_rate,
+            "Predicted Interest Rate": y_pred_interest_rate,
+        }
+    )
 
     # Reset index for better readability
     results.reset_index(drop=True, inplace=True)
@@ -63,11 +73,12 @@ def train_models():
 
     # Evaluate the models (sqaured=False to display RMSE for easier comparison)
     loan_term_accuracy = accuracy_score(y_test_loan_term, y_pred_loan_term)
-    mse_interest_rate = root_mean_squared_error(y_test_interest_rate, y_pred_interest_rate)
+    mse_interest_rate = root_mean_squared_error(
+        y_test_interest_rate, y_pred_interest_rate
+    )
 
     print(f"Loan Term Accuracy: {loan_term_accuracy * 100:.2f}%")
     print(f"Interest Rate Error: {mse_interest_rate:.2f}%")
-
 
     # Save the model to use later
     joblib.dump(model_loan_term, "../resources/saved-models/loan_term.pkl")
@@ -75,5 +86,3 @@ def train_models():
     joblib.dump(scaler, "../resources/saved-models/scaler.pkl")
     joblib.dump(label_encoder, "../resources/saved-models/label_encoder.pkl")
     print("Models saved!")
-
-

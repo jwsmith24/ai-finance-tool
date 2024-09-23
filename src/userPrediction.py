@@ -9,5 +9,3 @@ def collect_user_input():
     'loan_type': 'fixed' 
     }
     return data
-
-
