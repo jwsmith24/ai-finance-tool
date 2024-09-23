@@ -19,23 +19,3 @@ A random forest regression model is used for the interest rate predictions and a
 Using sample data consiting of 1000 simulated loans, the model predicts loan term with an accuracy of 41.5% and interest rate with an error of +/- 1.03%.
 
 ![Example results](resources/prediction-example.png)
-
-## Terms
-
-Features - Input data provided to the model  
-Label/Target(s) - Output data we want to predict with the model
-
-## ML Algorithms
-
-- Linear regression
-
-  - Used for predicting continuous values
-  - Assumes linear relationship between input features and output labels
-  - Great when data is roughly linear
-  - Sucks when data isn't linear
-
-- Random Forest
-  - Builds a ton of decision trees
-  - Each tree makes a prediction
-  - Final result is either the average predication of all the trees (regression task) or the majority vote (classification task)
-  - Great for data with complex relationships or non-linear data
