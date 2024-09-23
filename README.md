@@ -4,8 +4,8 @@ Sandbox to play around with AI/ML concepts and APIs in Python
 
 ## Running the program
 
-- Build the Docker container by naviagting to the project directory and running `docker build -t fin-app .`.
-- Run the container in interactive mode (to be able to provide user input) with `docker run -it fin-app`.
+- Build the Docker container by naviagting to the project directory and running `docker build -t fin-app .`
+- Run the container in interactive mode (to be able to provide user input) with `docker run -it fin-app`
 
 > [!NOTE]  
 > You may need to run these commands with sudo.
