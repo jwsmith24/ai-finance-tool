@@ -7,10 +7,10 @@ from models import train_models
 train_models()
 
 # Load trained models, scaler, and encoder
-model_loan_term = joblib.load("../resources/saved-models/loan_term.pkl")
-model_interest_rate = joblib.load("../resources/saved-models/interest_rate.pkl")
-scaler = joblib.load("../resources/saved-models/scaler.pkl")
-label_encoder = joblib.load("../resources/saved-models/label_encoder.pkl")
+model_loan_term = joblib.load("/resources/saved-models/loan_term.pkl")
+model_interest_rate = joblib.load("/resources/saved-models/interest_rate.pkl")
+scaler = joblib.load("/resources/saved-models/scaler.pkl")
+label_encoder = joblib.load("/resources/saved-models/label_encoder.pkl")
 
 
 def predict_user_input(input):
