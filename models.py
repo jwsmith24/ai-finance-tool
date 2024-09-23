@@ -12,7 +12,7 @@ import joblib
 
 def train_models():
     # Load the sample dataset
-    data = pd.read_csv("/resources/real_estate_loans_simulated.csv")
+    data = pd.read_csv("/app/resources/real_estate_loans_simulated.csv")
 
     # Clean the dataset (drop rows with missing values)
     data = data.dropna()
@@ -81,8 +81,8 @@ def train_models():
     print(f"Interest Rate Error: {mse_interest_rate:.2f}%")
 
     # Save the model to use later
-    joblib.dump(model_loan_term, "/resources/saved-models/loan_term.pkl")
-    joblib.dump(model_interest_rate, "/resources/saved-models/interest_rate.pkl")
-    joblib.dump(scaler, "/resources/saved-models/scaler.pkl")
-    joblib.dump(label_encoder, "/resources/saved-models/label_encoder.pkl")
+    joblib.dump(model_loan_term, "/app/resources/saved-models/loan_term.pkl")
+    joblib.dump(model_interest_rate, "/app/resources/saved-models/interest_rate.pkl")
+    joblib.dump(scaler, "/app/resources/saved-models/scaler.pkl")
+    joblib.dump(label_encoder, "/app/resources/saved-models/label_encoder.pkl")
     print("Models saved!")
