@@ -22,7 +22,7 @@ def train_models():
     data["loan_type_encoded"] = label_encoder.fit_transform(data["loan_type"])
 
     # Split the data into features (X) and labels/targets (y)
-    X = data[
+    x = data[
         ["income", "credit_score", "loan_amount", "property_value", "loan_type_encoded"]
     ]
     y_loan_term = data["loan_term"]  # Continous output
@@ -31,29 +31,29 @@ def train_models():
     # Train-test split
     # 80% of the data is used to train the model and then its evaluated on 20% of it
 
-    X_train, X_test, y_train_loan_term, y_test_loan_term = train_test_split(
-        X, y_loan_term, test_size=0.2, random_state=42
+    x_train, x_test, y_train_loan_term, y_test_loan_term = train_test_split(
+        x, y_loan_term, test_size=0.2, random_state=42
     )
-    X_train, X_test, y_train_interest_rate, y_test_interest_rate = train_test_split(
-        X, y_interest_rate, test_size=0.2, random_state=42
+    x_train, x_test, y_train_interest_rate, y_test_interest_rate = train_test_split(
+        x, y_interest_rate, test_size=0.2, random_state=42
     )
 
     # Scale inputs
     scaler = StandardScaler()
-    X_train = scaler.fit_transform(X_train)
-    X_test = scaler.transform(X_test)
+    x_train = scaler.fit_transform(x_train)
+    x_test = scaler.transform(x_test)
 
     # Create and train the model for loan term
     model_loan_term = RandomForestClassifier(n_estimators=100, random_state=42)
-    model_loan_term.fit(X_train, y_train_loan_term)
+    model_loan_term.fit(x_train, y_train_loan_term)
 
     # Create and train the model for interest rate
     model_interest_rate = RandomForestRegressor(n_estimators=100, random_state=42)
-    model_interest_rate.fit(X_train, y_train_interest_rate)
+    model_interest_rate.fit(x_train, y_train_interest_rate)
 
     # Predict on the test set
-    y_pred_loan_term = model_loan_term.predict(X_test)
-    y_pred_interest_rate = model_interest_rate.predict(X_test)
+    y_pred_loan_term = model_loan_term.predict(x_test)
+    y_pred_interest_rate = model_interest_rate.predict(x_test)
 
     # Create a dataframe to store the results
     results = pd.DataFrame(
