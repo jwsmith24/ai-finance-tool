@@ -25,7 +25,7 @@ def train_models():
     x = data[
         ["income", "credit_score", "loan_amount", "property_value", "loan_type_encoded"]
     ]
-    y_loan_term = data["loan_term"]  # Continous output
+    y_loan_term = data["loan_term"]  # Continuous output
     y_interest_rate = data["interest_rate"]  # Discrete - 15 or 30 year term
 
     # Train-test split
@@ -71,7 +71,7 @@ def train_models():
     # Display the first few rows of the results
     print(results.head())
 
-    # Evaluate the models (sqaured=False to display RMSE for easier comparison)
+    # Evaluate the models (squared=False to display RMSE for easier comparison)
     loan_term_accuracy = accuracy_score(y_test_loan_term, y_pred_loan_term)
     mse_interest_rate = root_mean_squared_error(
         y_test_interest_rate, y_pred_interest_rate
