@@ -1,19 +1,37 @@
-from flask import Flask, jsonify, request
-from flask_cors import CORS
+from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
+from pydantic import BaseModel
 
-app = Flask(__name__)
-CORS(app)
+# create FastAPI instance
+app = FastAPI()
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # Can also specify specific origins
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 
-@app.route('/test', methods=['POST'])
-def handle_data():
-    data = request.get_json()
-    response = {
-        'message': 'Data was received by the python backend!',
-        'data': data
-    }
-    return jsonify(response)
+# define request model
+class Message(BaseModel):
+    name: str
+
+
+# define root endpoint
+@app.get('/')
+def root():
+    return {"message": "You hit the FastAPI API how fun"}
+
+
+@app.post('/api')
+async def handle_request(msg: Message):
+    print(msg.name)
+    return {"msg": "You hit the FastAPI API how fun"}
 
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    import uvicorn
+
+    uvicorn.run("app:app", host="127.0.0.1", port=8000, reload=True)
