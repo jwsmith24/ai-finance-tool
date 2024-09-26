@@ -4,6 +4,7 @@ import "../style/Forms.css"
 export default function FinancialDataForm() {
     // init form state
     const [formState, setFormState] = useState({
+        name: "",
         income: "",
         creditScore: "",
         cash: "",
@@ -12,6 +13,7 @@ export default function FinancialDataForm() {
         interestRate: "",
     });
 
+    // On every keystroke, update current input field and pull in existing inputs
     const handleChange = (e) => {
         const {name, value} = e.target;
         setFormState({
@@ -27,7 +29,7 @@ export default function FinancialDataForm() {
 
     return (
         <form id="finData" onSubmit={handleSubmit}>
-            <div className={"formContent"}>
+            <div className={"formInputs"}>
                 <div className={"inputs"}>
                     <label htmlFor="name">Name: </label>
                     <input
@@ -39,7 +41,7 @@ export default function FinancialDataForm() {
                         required
                     />
                 </div>
-                <div>
+                <div className={"inputs"}>
                     <label htmlFor="income">Income: </label>
                     <input
                         type="number"
@@ -51,7 +53,7 @@ export default function FinancialDataForm() {
                         required
                     />
                 </div>
-                <div>
+                <div className={"inputs"}>
                     <label htmlFor="creditScore">Credit Score: </label>
                     <input
                         type="number"
@@ -59,12 +61,12 @@ export default function FinancialDataForm() {
                         id="creditScore"
                         value={formState.creditScore}
                         onChange={handleChange}
-                        min="0"
+                        min="300"
                         max="850"
                         required
                     />
                 </div>
-                <div>
+                <div className={"inputs"}>
                     <label htmlFor="cash">Available Cash:</label>
                     <input
                         type="number"
@@ -76,7 +78,7 @@ export default function FinancialDataForm() {
                         required
                     />
                 </div>
-                <div>
+                <div className={"inputs"}>
                     <label htmlFor="propertyValue">Property Value: </label>
                     <input
                         type="number"
@@ -88,7 +90,7 @@ export default function FinancialDataForm() {
                         required
                     />
                 </div>
-                <div>
+                <div className={"inputs"}>
                     <label htmlFor="loanAmount">Loan Amount: </label>
                     <input
                         type="number"
@@ -100,13 +102,15 @@ export default function FinancialDataForm() {
                         required
                     />
                 </div>
-                <div>
+                <div className={"inputs"}>
                     <label htmlFor="interestRate">Interest Rate: </label>
                     <input
                         type="number"
                         name="interestRate"
                         id="interestRate"
-                        min={"0"}
+                        min={"1"}
+                        max={"15"}
+                        step={"0.01"}
                         value={formState.interestRate}
                         onChange={handleChange}
                         required
