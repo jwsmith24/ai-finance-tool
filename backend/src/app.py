@@ -9,7 +9,7 @@ CORS(app)
 def handle_data():
     data = request.get_json()
     response = {
-        'message': 'Data received by the python backend!',
+        'message': 'Data was received by the python backend!',
         'data': data
     }
     return jsonify(response)

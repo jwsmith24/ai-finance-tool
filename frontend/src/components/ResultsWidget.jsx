@@ -4,7 +4,7 @@ export function ResultsWidget() {
     const [responseData, setResponseData] = useState(null); // no initial parameters
 
     const sendDataToServer = async () => {
-        const data = {name: "test"};
+        const data = {name: "this is data sent from the react frontend"};
 
         try {
             const response = await fetch('http://localhost:5000/test', {
