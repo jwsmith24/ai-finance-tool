@@ -1,0 +1,17 @@
+#finData {
+    display: grid;
+    width: 300px;
+
+    grid-template-rows: repeat(8, 30px);
+    grid-template-columns: 1fr 1fr;
+
+
+    justify-content: center;
+    justify-self: center;
+    align-content: center;
+    gap: 10px;
+}
+
+input {
+    width: 100px;
+}

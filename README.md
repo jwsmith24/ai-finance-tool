@@ -24,4 +24,4 @@ Using sample data consisting of 1000 simulated loans, the model predicts loan te
 interest
 rate with an error of +/- 1.03%.
 
-![Example results](/backend/resources/prediction-example.png)
+![Example results](backend/resources/prediction-example.png)
