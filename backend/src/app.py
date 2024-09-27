@@ -4,6 +4,7 @@ from pydantic import BaseModel
 
 # create FastAPI instance
 app = FastAPI()
+count = 0
 
 app.add_middleware(
     CORSMiddleware,
@@ -12,6 +13,7 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
 
 
 # define request model
@@ -27,8 +29,11 @@ def root():
 
 @app.post('/api')
 async def handle_request(msg: Message):
+    global count
+    count = count + 1
     print(msg.name)
-    return {"msg": "You hit the FastAPI API how fun"}
+    print(f"This API has been tagged {count} times since the last crash.")
+    return {"msg": f"You hit the FastAPI API, how fun! API has been tagged {count} times since the last crash."}
 
 
 if __name__ == "__main__":
