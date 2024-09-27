@@ -1,4 +1,5 @@
 import {useState} from "react";
+import "../style/index.css"
 
 export function ResultsWidget() {
     const [responseData, setResponseData] = useState(null); // no initial parameters
@@ -24,7 +25,10 @@ export function ResultsWidget() {
 
     return (
         <div>
-            <button onClick={sendDataToServer}>Send Data</button>
+            <button
+                className={"bg-blue-500 text-white font-bold py-2 px-4 rounded hover:bg-blue-700 transition duration-200"}
+                onClick={sendDataToServer}>Send Data
+            </button>
             {responseData && (
                 <div>
                     <h3>Response from Backend:</h3>
