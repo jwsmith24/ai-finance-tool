@@ -82,7 +82,7 @@ export default function FinancialDataForm() {
 
     return (
         <form id="finData" onSubmit={handleSubmit}
-              className={"max-w-lg p-6 mx-auto bg-white shadow-lg rounded-lg"}>
+              className={"max-w-lg p-6 my-8 mx-auto bg-white shadow-lg rounded-lg"}>
             <h2 className={"text-2xl font-bold mb-4 text-left"}>Financial Data</h2>
 
             {formFields.map((field) => (
