@@ -26,7 +26,7 @@ export function ResultsWidget() {
     return (
         <div>
             <button
-                className={"bg-blue-500 text-white font-bold py-2 px-4 rounded hover:bg-blue-700 transition duration-200"}
+                className={"bg-violet-500 text-white active:bg-violet-700 font-bold py-2 px-4 rounded hover:bg-violet-600 transition duration-200"}
                 onClick={sendDataToServer}>Send Data
             </button>
             {responseData && (
