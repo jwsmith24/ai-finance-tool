@@ -29,7 +29,13 @@ export default function FinancialDataForm() {
     const inputClass = 'w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-violet-500'
 
     const formFields = [
-        {id: 1, label: 'First Name', type: 'text', name: 'firstName', placeHolder: 'First name'},
+        {
+            id: 1,
+            label: 'First Name',
+            type: 'text',
+            name: 'firstName',
+            placeHolder: 'First name'
+        },
         {
             id: 2,
             label: 'Income',
@@ -90,6 +96,7 @@ export default function FinancialDataForm() {
                         onChange={handleChange}
                         required
                         className={inputClass}
+                        placeholder={field.placeHolder}
                     />
                 </div>
             ))}
