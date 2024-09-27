@@ -1,5 +1,5 @@
 import {useState} from "react";
-import "../style/Forms.css"
+
 
 export default function FinancialDataForm() {
     // init form state
