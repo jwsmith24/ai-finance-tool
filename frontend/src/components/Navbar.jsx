@@ -1,11 +1,13 @@
 export default function Navbar() {
+
+    const navBarItems = ['Option 1', 'Option 2', 'Option 3', 'Option 4']
+
     return (
         <nav className="bg-violet-800 p-4">
             <div className={"container mx-auto flex justify-between items-center"}>
-                <a href={"#"} className={"text-gray-300 hover:text-white"}> Option 1</a>
-                <a href={"#"} className={"text-gray-300 hover:text-white"}> Option 2</a>
-                <a href={"#"} className={"text-gray-300 hover:text-white"}> Option 3</a>
-                <a href={"#"} className={"text-gray-300 hover:text-white"}> Option 4</a>
+                {navBarItems.map((item, index) => (
+                    <a href={"#"} className={"text-gray-300 hover:text-white"} key={index}>{item}</a>
+                ))}
 
                 <div>
                     <button className="text-gray-300 hover:text-white focus:outline-none">
