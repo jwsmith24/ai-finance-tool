@@ -1,5 +1,5 @@
 import {useState} from "react";
-import "../style/index.css"
+import "../index.css"
 
 export function ResultsWidget() {
     const [responseData, setResponseData] = useState(null); // no initial parameters
